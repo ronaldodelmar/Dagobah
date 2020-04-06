@@ -1,5 +1,7 @@
 package br.com.dagobah.game;
 
+import java.util.Map;
+
 public class Game {
 
 	private Mapa mapa;
@@ -24,10 +26,33 @@ public class Game {
 
 		Dialogo.mensagem("Seja bem vindo : " + heroi + "!");
 
-		Dialogo.mensagem("Você está atualmente em: " + mapa.obterLocalDa(posicaoAtualDoHeroi));
-		
-		Dialogo.mensagem("Você pode ir para o seguintes locais: "+ mapa.listarDestinosAPartirDa(posicaoAtualDoHeroi));
-		
+		while (true) {
+
+			Dialogo.mensagem("Você está atualmente em: " + mapa.obterLocalDa(posicaoAtualDoHeroi));
+
+			this.posicaoAtualDoHeroi = obterNovoDestinoDoHeroi();
+
+			Dialogo.mensagem("Você está a caminho de: " + mapa.obterLocalDa(posicaoAtualDoHeroi) + "...");
+
+		}
+
+	}
+
+	private Coordenada obterNovoDestinoDoHeroi() {
+
+		Dialogo.mensagem("Você pode ir para o seguintes locais: " + mapa.listarDestinosAPartirDa(posicaoAtualDoHeroi));
+
+		try {
+
+			Direcao direcao = Dialogo.perguntarDirecao("Para qual local você deseja ir? ");
+
+			return mapa.buscarCoordenadaDoDestino(direcao, posicaoAtualDoHeroi);
+
+		} catch (Exception e) {
+			Dialogo.mensagem("Local selecionado inválido!");
+			return obterNovoDestinoDoHeroi();
+		}
+
 	}
 
 	public static void main(String[] args) {

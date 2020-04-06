@@ -2,6 +2,7 @@ package br.com.dagobah.game;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class Mapa {
 
@@ -38,6 +39,17 @@ public class Mapa {
 			return false;
 		}
 		return true;
+	}
+
+	public Coordenada buscarCoordenadaDoDestino(Direcao direcao, Coordenada coordenada) {
+		
+		Coordenada novaCoordenada = coordenada.moverPara(direcao);
+		
+		if(existe(novaCoordenada)) {
+			return novaCoordenada;
+		}
+		
+		throw new NoSuchElementException("Não é possível seguir nessa direção!");
 	}
 	
 }

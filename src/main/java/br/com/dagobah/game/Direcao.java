@@ -1,18 +1,18 @@
 package br.com.dagobah.game;
 
+import java.util.NoSuchElementException;
+
 public enum Direcao {
 
-	FRENTE("F", -1, 0), 
-	ESQUERDA("E", 0, -1), 
-	DIREITA("D", 0, 1), 
-	VOLTAR("V", 1, 0);
+	C(-1, 0), 
+	E(0, -1), 
+	D(0, 1), 
+	B(1, 0);
 
-	private final String direcao;
 	private final int x;
 	private final int y;
 
-	private Direcao(String direcao, int x, int y) {
-		this.direcao = direcao;
+	private Direcao(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
@@ -25,8 +25,15 @@ public enum Direcao {
 		return y;
 	}
 
-	public String getDirecao() {
-		return direcao;
+	public static Direcao buscarPor(String siglaDirecao) {
+		
+		for (Direcao direcao : Direcao.values()) {
+			if(direcao.toString().equalsIgnoreCase(siglaDirecao)) {
+				return direcao;
+			}
+		}
+		
+		throw new NoSuchElementException("Não foi encontrado a direção com a sigla: " + siglaDirecao);
 	}
 
 }

@@ -15,4 +15,9 @@ public class Dialogo {
 		return scanner.nextLine();
 	}
 
+	public static Direcao perguntarDirecao(String mensagem) {
+		String siglaDirecao = perguntar(mensagem);
+		return Direcao.buscarPor(siglaDirecao);
+	}
+
 }
