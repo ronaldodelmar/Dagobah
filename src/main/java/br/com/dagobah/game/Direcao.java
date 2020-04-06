@@ -1,7 +1,10 @@
 package br.com.dagobah.game;
 
 import java.util.NoSuchElementException;
-
+/**
+ * Enum que contém as direções para navegação na matriz (cima, esquerda, direita e baixo)
+ *
+ */
 public enum Direcao {
 
 	C(-1, 0), 

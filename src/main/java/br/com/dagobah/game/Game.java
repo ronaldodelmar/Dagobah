@@ -1,7 +1,5 @@
 package br.com.dagobah.game;
 
-import java.util.Map;
-
 public class Game {
 
 	private Mapa mapa;
