@@ -1,4 +1,4 @@
-package br.com.dabogah.game;
+package br.com.dagobah.game;
 
 import java.util.Scanner;
 
